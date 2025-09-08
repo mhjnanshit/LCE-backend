@@ -1,4 +1,4 @@
-import Founder from "../models/founder.model.js";
+import Founders from "../models/founder.model.js";
 import Admin from "../models/admin.model.js";
 import { hashPassword, comparePassword } from "../utils/hash.js";
 import { generateAccessToken, generateRefreshToken } from "../utils/jwt.js";
@@ -8,7 +8,7 @@ import { ApiError } from "../utils/ApiError.js";
 // Founder Services
 
 export const findFounderByEmail = async (email) => {
-    return await Founder.findOne({ email });
+    return await Founders.findOne({ email });
 };
 
 export const registerFounder = async (email, password, userId) => {
@@ -22,7 +22,7 @@ export const registerFounder = async (email, password, userId) => {
 
         const hashedPassword = await hashPassword(password);
 
-        return await Founder.create({
+        return await Founders.create({
             email,
             password: hashedPassword,
             user_id: userId,
