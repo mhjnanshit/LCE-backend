@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const startupProfileSchema = new mongoose.Schema(
     {
-        user_id: {
+        user_id: { // Dont want to expose _id to frontend , we would show this id
             type: String,
             default: () => new mongoose.Types.ObjectId(),
             unique: true,
